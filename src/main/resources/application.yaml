@@ -1,0 +1,26 @@
+quarkus:
+  live-reload:
+    instrumentation: true
+  container-image:
+    group:
+    username:
+    password:
+    registry:
+    name: cert-operator
+    additional-tags: latest
+    push: true
+    builder: jib
+    build: true
+    insecure: true
+#  operator-sdk:
+#    crd:
+#      apply: true
+#    controllers:
+#      exposedapp:
+#        namespaces: default
+  native:
+    container-build: true
+  kubernetes:
+    namespace: default
+  package:
+    type: native
