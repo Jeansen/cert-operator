@@ -17,7 +17,7 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
-    implementation(enforcedPlatform("io.quarkiverse.operatorsdk:quarkus-operator-sdk-bom:6.3.0"))
+    implementation(enforcedPlatform("io.quarkiverse.operatorsdk:quarkus-operator-sdk-bom:6.3.1-SNAPSHOT"))
     implementation("io.quarkus:quarkus-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.quarkus:quarkus-arc")
@@ -26,16 +26,16 @@ dependencies {
     implementation("io.quarkus:quarkus-config-yaml")
     implementation("io.quarkus:quarkus-container-image-jib")
 
-    implementation("io.quarkiverse.operatorsdk:quarkus-operator-sdk-bundle-generator:6.3.1-SNAPSHOT")
-    implementation("io.quarkiverse.operatorsdk:quarkus-operator-sdk:6.3.1-SNAPSHOT")
-    implementation("io.quarkiverse.operatorsdk:quarkus-operator-sdk-annotations:6.3.1-SNAPSHOT")
+    implementation("io.quarkiverse.operatorsdk:quarkus-operator-sdk-bundle-generator")
+    implementation("io.quarkiverse.operatorsdk:quarkus-operator-sdk")
+    implementation("io.quarkiverse.operatorsdk:quarkus-operator-sdk-annotations")
 
 }
 
 
 
 group = "com.example"
-version = "1.1.0"
+version = "1.2.0"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17

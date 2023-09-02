@@ -12,15 +12,36 @@ import io.quarkiverse.operatorsdk.annotations.RBACVerbs
 import java.util.logging.Level
 import java.util.logging.Logger
 
-const val CERTIFICATES_K8S_IO_GROUP = "certificates.k8s.io"
-const val ADDITIONAL_UPDATE_RESOURCE = "certificatesigningrequests/approval"
-const val SIGNERS_VERB = "approve"
-const val SIGNERS_RESOURCE = "signers"
-const val SIGNERS_RESOURCE_NAMES = "kubernetes.io/kubelet-serving"
 
 @ControllerConfiguration(name = "server-cert-approve")
-@RBACRule(verbs = [RBACVerbs.UPDATE], apiGroups = [CERTIFICATES_K8S_IO_GROUP], resources = [ADDITIONAL_UPDATE_RESOURCE])
-@RBACRule(verbs = [SIGNERS_VERB], apiGroups = [CERTIFICATES_K8S_IO_GROUP], resources = [SIGNERS_RESOURCE], resourceNames = [SIGNERS_RESOURCE_NAMES])
+@RBACRule(
+    verbs = [RBACVerbs.UPDATE, RBACVerbs.LIST, RBACVerbs.WATCH],
+    apiGroups = ["certificates.k8s.io"],
+    resources = ["certificatesigningrequests"]
+)
+@RBACRule(
+    verbs = [RBACVerbs.UPDATE, RBACVerbs.GET, RBACVerbs.CREATE],
+    apiGroups = ["coordination.k8s.io"],
+    resources = ["leases"],
+)
+@RBACRule(
+    verbs = [RBACVerbs.UPDATE],
+    apiGroups = ["certificates.k8s.io"],
+    resources = ["certificatesigningrequests/approval"]
+)
+@RBACRule(
+    verbs = ["approve"],
+    apiGroups = ["certificates.k8s.io"],
+    resources = ["signers"],
+    resourceNames = ["kubernetes.io/kubelet-serving"]
+)
+@RBACRule(
+    verbs = ["create"],
+    apiGroups = [""],
+    resources = ["events"],
+)
+
+
 class ExposedAppReconciler(private val client: KubernetesClient) : Reconciler<CertificateSigningRequest?> {
 
 
