@@ -38,7 +38,7 @@ import java.util.logging.Logger
 @RBACRule(
     verbs = ["create"],
     apiGroups = [""],
-    resources = ["events"],
+    resources = ["events"]
 )
 
 
