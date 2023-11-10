@@ -1,4 +1,6 @@
 quarkus:
+  http:
+    host-enabled: false
   live-reload:
     instrumentation: true
   container-image:
