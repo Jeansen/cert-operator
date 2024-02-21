@@ -43,8 +43,6 @@ import java.util.logging.Logger
 
 
 class ExposedAppReconciler(private val client: KubernetesClient) : Reconciler<CertificateSigningRequest?> {
-
-
     override fun reconcile(resource: CertificateSigningRequest?, context: Context<CertificateSigningRequest?>?): UpdateControl<CertificateSigningRequest?> {
         val logger = Logger.getLogger(ExposedAppReconciler::class.toString())
 
