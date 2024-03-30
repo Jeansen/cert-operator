@@ -1,0 +1,13 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: cert-operator-catalog
+  namespace: default
+spec:
+  sourceType: grpc
+  image: proxy-ng:443/test/cert-operator-catalog:1.97.0
+  displayName: Cert Operator Catalog
+  publisher: Me
+  updateStrategy:
+    registryPoll:
+      interval: 10m

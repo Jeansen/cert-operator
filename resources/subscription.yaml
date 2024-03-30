@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: cert-operator-sub
+  namespace: default
+spec:
+  channel: stable-v1
+  name: cert-operator
+  source: cert-operator-catalog
+  sourceNamespace: default
+  installPlanApproval: Automatic
+  # installPlanApproval: Manual
