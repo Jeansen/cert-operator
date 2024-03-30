@@ -4,7 +4,7 @@ quarkus:
   live-reload:
     instrumentation: true
   container-image:
-    group:
+    group: quarkus
     username:
     password:
     registry:
@@ -14,15 +14,21 @@ quarkus:
     builder: jib
     build: true
     insecure: true
-#  operator-sdk:
+  operator-sdk:
 #    crd:
 #      apply: true
 #    controllers:
 #      exposedapp:
 #        namespaces: default
+    bundle:
+      channels:
+        - stable
   native:
-    container-build: true
+    container-build: false
+    additional-build-args:
+      - -R:MaxHeapSize=8G
+      - --strict-image-heap
   kubernetes:
     namespace: default
-  package:
-    type: native
+#  package:
+#    type: native
