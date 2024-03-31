@@ -30,5 +30,5 @@ quarkus:
       - --strict-image-heap
   kubernetes:
     namespace: default
-#  package:
-#    type: native
+  package:
+    type: native
